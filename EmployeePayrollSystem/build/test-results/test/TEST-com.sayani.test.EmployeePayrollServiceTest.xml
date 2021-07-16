@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.sayani.test.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-16T15:31:15" hostname="DESKTOP-N66BMGP" time="3.431">
+<testsuite name="com.sayani.test.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-16T15:50:13" hostname="DESKTOP-N66BMGP" time="0.795">
   <properties/>
-  <testcase name="givenEmployeePayrollInDB_WhenRetrieved_ShouldMatchEmployeeCount" classname="com.sayani.test.EmployeePayrollServiceTest" time="3.431"/>
+  <testcase name="givenEmployeePayrollInDB_WhenRetrieved_ShouldMatchEmployeeCount" classname="com.sayani.test.EmployeePayrollServiceTest" time="0.795"/>
   <system-out><![CDATA[Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@1345279a
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@4aa7f422
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
