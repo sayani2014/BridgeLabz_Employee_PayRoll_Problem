@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.sayani.test.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-17T11:06:29" hostname="DESKTOP-N66BMGP" time="0.662">
+<testsuite name="com.sayani.test.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-17T11:48:57" hostname="DESKTOP-N66BMGP" time="0.706">
   <properties/>
-  <testcase name="givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDB" classname="com.sayani.test.EmployeePayrollServiceTest" time="0.662"/>
+  <testcase name="givenDateRange_WhenRetrieved_ShouldMatchTheEmployeeCount" classname="com.sayani.test.EmployeePayrollServiceTest" time="0.706"/>
   <system-out><![CDATA[Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
 Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@491c677c
 Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@73463dbb
-Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@3bff49fb
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@69d66a34
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

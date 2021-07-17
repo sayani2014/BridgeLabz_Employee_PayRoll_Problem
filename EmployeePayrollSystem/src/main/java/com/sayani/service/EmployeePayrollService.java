@@ -3,6 +3,7 @@ package com.sayani.service;
 import com.sayani.exception.EmployeePayrollException;
 import com.sayani.model.EmployeePayrollData;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class EmployeePayrollService {
@@ -22,6 +23,7 @@ public class EmployeePayrollService {
      *
      * @param ioService
      * @return
+     * @throws EmployeePayrollException
      */
 
     public List<EmployeePayrollData> readEmployeePayrollData(IOService ioService) throws EmployeePayrollException {
@@ -38,6 +40,7 @@ public class EmployeePayrollService {
      *
      * @param name
      * @param salary
+     * @throws EmployeePayrollException
      */
 
     public void updateEmployeeSalary(String name, double salary) throws EmployeePayrollException {
@@ -57,6 +60,7 @@ public class EmployeePayrollService {
      *
      * @param name
      * @param salary
+     * @throws EmployeePayrollException
      */
 
     public void updateEmployeeSalaryUsingPreparedStatement(String name, double salary) throws EmployeePayrollException {
@@ -74,6 +78,7 @@ public class EmployeePayrollService {
      *
      * @param name
      * @return
+     * @throws EmployeePayrollException
      */
 
     public boolean checkEmployeePayrollInSyncWithDB(String name) throws EmployeePayrollException {
@@ -95,4 +100,21 @@ public class EmployeePayrollService {
                               .findFirst()
                               .orElse(null);
     }
+
+    /**
+     * Purpose : Retrieve the data for a particular date range
+     *
+     * @param ioService
+     * @param startDate
+     * @param endDate
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public List<EmployeePayrollData> readEmployeePayrollForDateRange(IOService ioService, LocalDate startDate, LocalDate endDate) throws EmployeePayrollException {
+        if( ioService.equals(IOService.DB_IO))
+            return employeePayrollDBService.getEmployeeForDateRange(startDate, endDate);
+        return null;
+    }
+
 }
