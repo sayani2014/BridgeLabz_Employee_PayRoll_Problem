@@ -3,6 +3,7 @@
  * UC2 : Ability for Employee Payroll Service to retrieve the Employee Payroll from the database
  * UC3 : Ability to update the salary i.e. the base pay for Employee Terissa to 3000000.00 and sync it with Database
  * UC4 : Ability to update the salary i.e. the base pay for Employee Terissa to 5000000.00 and sync it with Database using JDBC PreparedStatement
+ * Refractor UC4 : Make Payroll DB Service Object as Singleton
  *
  * @author : SAYANI KOLEY
  * @since : 17.07.2021
