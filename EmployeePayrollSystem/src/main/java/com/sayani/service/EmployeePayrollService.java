@@ -50,6 +50,25 @@ public class EmployeePayrollService {
     }
 
     /**
+     * Purpose : To update the Employee Salary in the database using Prepared statement
+     *           If the value is updated, the result value is greater than 0; else 0
+     *           Match the given name with the EmployeePayrollData list
+     *           If found, assign the given salary to the EmployeePayrollData list
+     *
+     * @param name
+     * @param salary
+     */
+
+    public void updateEmployeeSalaryUsingPreparedStatement(String name, double salary) throws EmployeePayrollException {
+        int result = employeePayrollDBService.updateEmployeeDataPreparedStatement(name, salary);
+        if(result == 0)
+            return;
+        EmployeePayrollData employeePayrollData = this.getEmployeePayrollData(name);
+        if( employeePayrollData != null )
+            employeePayrollData.salary = salary;
+    }
+
+    /**
      * Purpose : To check whether the EmployeePayrollData is in sync with the DB
      *           Use to equals() to compare the values
      *

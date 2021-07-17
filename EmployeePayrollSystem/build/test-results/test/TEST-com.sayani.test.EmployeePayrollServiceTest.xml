@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.sayani.test.EmployeePayrollServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-07-17T10:32:29" hostname="DESKTOP-N66BMGP" time="1.434">
+<testsuite name="com.sayani.test.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-17T11:06:29" hostname="DESKTOP-N66BMGP" time="0.662">
   <properties/>
-  <testcase name="givenEmployeePayrollInDB_WhenRetrieved_ShouldMatchEmployeeCount" classname="com.sayani.test.EmployeePayrollServiceTest" time="1.06"/>
-  <testcase name="givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDB" classname="com.sayani.test.EmployeePayrollServiceTest" time="0.371"/>
+  <testcase name="givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDB" classname="com.sayani.test.EmployeePayrollServiceTest" time="0.662"/>
   <system-out><![CDATA[Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@4b0fa143
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@491c677c
 Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@6ee95087
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@73463dbb
 Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@74af962d
-Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@2d22a427
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@3bff49fb
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

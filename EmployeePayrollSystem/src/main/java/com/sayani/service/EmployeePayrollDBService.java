@@ -51,6 +51,18 @@ public class EmployeePayrollDBService {
     }
 
     /**
+     * Purpose : Update the salary in the DB using PreparedStatement Interface
+     *
+     * @param name
+     * @param salary
+     * @return
+     */
+
+    public int updateEmployeeDataPreparedStatement(String name, double salary) throws EmployeePayrollException {
+        return this.updateEmployeeDataUsingPreparedStatement(name,salary);
+    }
+
+    /**
      * Purpose : Create connection with the database
      *
      * @return
@@ -84,6 +96,28 @@ public class EmployeePayrollDBService {
             return statement.executeUpdate(sql);
         } catch (SQLException e) {
             throw new EmployeePayrollException("Please check the updateEmployeeDataUsingStatement() for detailed information!");
+        }
+    }
+
+    /**
+     * Purpose : Update the salary in the DB using PreparedStatement Interface
+     *
+     * @param name
+     * @param salary
+     * @throws EmployeePayrollException
+     * @return
+     */
+
+    private int updateEmployeeDataUsingPreparedStatement(String name, double salary) throws EmployeePayrollException {
+        String sql = "UPDATE employee_payroll SET salary = ? WHERE name = ?";
+        try (Connection connection = this.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setDouble(1, salary);
+            statement.setString(2, name);
+
+            return statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new EmployeePayrollException("Please check the updateEmployeeDataUsingPreparedStatement() for detailed information!");
         }
     }
 
@@ -162,10 +196,10 @@ public class EmployeePayrollDBService {
 
     private List<EmployeePayrollData> getEmployeePayrollDataUsingDB(String sql) throws EmployeePayrollException {
         List<EmployeePayrollData> employeePayrollList = new ArrayList<>();
-        try (Connection connection = this.getConnection()){
+        try (Connection connection = this.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
-            while(result.next()) {
+            while (result.next()) {
                 int id = result.getInt("id");
                 String name = result.getString("name");
                 double salary = result.getDouble("salary");
