@@ -4,7 +4,9 @@ import com.sayani.exception.EmployeePayrollException;
 import com.sayani.model.EmployeePayrollData;
 
 import java.time.LocalDate;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class EmployeePayrollService {
     private EmployeePayrollDBService employeePayrollDBService;
@@ -112,9 +114,115 @@ public class EmployeePayrollService {
      */
 
     public List<EmployeePayrollData> readEmployeePayrollForDateRange(IOService ioService, LocalDate startDate, LocalDate endDate) throws EmployeePayrollException {
-        if( ioService.equals(IOService.DB_IO))
+        if( ioService.equals(IOService.DB_IO) )
             return employeePayrollDBService.getEmployeeForDateRange(startDate, endDate);
         return null;
     }
 
+    /**
+     * Purpose : Calculate total salary based on gender
+     *
+     * @param ioService
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double readEmployeePayrollToCalculateSum(IOService ioService, String gender) throws EmployeePayrollException {
+        if( ioService.equals(IOService.DB_IO) )
+            return employeePayrollDBService.calculateTotalSalary(gender);
+        return 0;
+    }
+
+    /**
+     * Purpose : Calculate average salary based on gender
+     *
+     * @param ioService
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double readEmployeePayrollToCalculateAvg(IOService ioService, String gender) throws EmployeePayrollException {
+        if( ioService.equals(IOService.DB_IO) )
+            return employeePayrollDBService.calculateAverageSalary(gender);
+        return 0;
+    }
+
+    /**
+     * Purpose : Calculate minimum salary based on gender
+     *
+     * @param ioService
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double readEmployeePayrollToCalculateMin(IOService ioService, String gender) throws EmployeePayrollException {
+        if( ioService.equals(IOService.DB_IO) )
+            return employeePayrollDBService.calculateMinSalary(gender);
+        return 0;
+    }
+
+    /**
+     * Purpose : Calculate maximum salary based on gender
+     *
+     * @param ioService
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double readEmployeePayrollToCalculateMax(IOService ioService, String gender) throws EmployeePayrollException {
+        if( ioService.equals(IOService.DB_IO) )
+            return employeePayrollDBService.calculateMaxSalary(gender);
+        return 0;
+    }
+
+    /**
+     * Purpose : Calculate number of employees based on particular gender
+     *
+     * @param ioService
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double readEmployeePayrollToCalculateCountOfGender(IOService ioService, String gender) throws EmployeePayrollException {
+        if( ioService.equals(IOService.DB_IO) )
+            return employeePayrollDBService.calculateNumberOfEmployee(gender);
+        return 0;
+    }
+
+
+    /**
+     * Purpose : Calculate number of employees based on gender
+     *
+     * @param ioService
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public int readEmployeePayrollToCalculateCount(IOService ioService) throws EmployeePayrollException {
+        if( ioService.equals(IOService.DB_IO) ) {
+            Hashtable<String,Integer> htable = employeePayrollDBService.calculateCountEmployee();
+            return getEmployeePayrollGenderCount(htable);
+        }
+        return 0;
+    }
+
+    /**
+     * Purpose : Get the total count of employees
+     *
+     * @param htable
+     * @return
+     */
+
+    private int getEmployeePayrollGenderCount(Hashtable<String,Integer> htable) {
+        AtomicInteger sum = new AtomicInteger();
+        htable.entrySet().stream().forEach(count -> {
+                                    sum.addAndGet(count.getValue());
+                                });
+        return Integer.parseInt(sum.toString());
+    }
 }

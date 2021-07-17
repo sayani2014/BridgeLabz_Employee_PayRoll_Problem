@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">10</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.706s</div>
+<div class="counter">1.272s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,52 @@
 </thead>
 <tr>
 <td class="success">givenDateRange_WhenRetrieved_ShouldMatchTheEmployeeCount</td>
-<td class="success">0.706s</td>
+<td class="success">0.495s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenEmployeePayrollInDB_WhenRetrieved_ShouldMatchEmployeeCount</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenEmployeePayrollInDB_WhenRetrieved_ShouldMatchTheCountOfMaleAndFemaleEmployee</td>
+<td class="success">0.016s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenEmployeePayrollInDB_WhenRetrieved_ShouldMatchTheCountOfParticularMaleAndFemaleEmployee</td>
+<td class="success">0.022s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenEmployeePayrollSalaryInDB_WhenRetrieved_ShouldMatchTheAverageSum</td>
+<td class="success">0.035s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenEmployeePayrollSalaryInDB_WhenRetrieved_ShouldMatchTheMaxSalary</td>
+<td class="success">0.015s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenEmployeePayrollSalaryInDB_WhenRetrieved_ShouldMatchTheMinSalary</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenEmployeePayrollSalaryInDB_WhenRetrieved_ShouldMatchTheTotalSum</td>
+<td class="success">0.025s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDB</td>
+<td class="success">0.273s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDBUsingPreparedStatement</td>
+<td class="success">0.370s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -88,9 +133,45 @@
 <h2>Standard output</h2>
 <span class="code">
 <pre>Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@491c677c
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@76e189f4
 Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@69d66a34
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@2637a079
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@745fbded
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@7c0c64b6
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@303e6a6f
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@77de3837
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@2b644345
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@14730176
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@b985c31
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@79302a02
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@8523be9
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@515ac96
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@5cfb51ac
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@663967db
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@4cff4fb
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@7f1fe4f8
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@1e2de85a
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@66b19c7d
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@57c1a349
+Connecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@70e571ca
 </pre>
 </span>
 </div>
@@ -102,7 +183,7 @@ Connection is successful! com.mysql.cj.jdbc.ConnectionImpl@69d66a34
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.1.1</a> at 17-Jul-2021, 5:18:58 PM</p>
+<a href="http://www.gradle.org">Gradle 6.1.1</a> at 17-Jul-2021, 9:35:17 PM</p>
 </div>
 </div>
 </body>

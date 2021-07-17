@@ -1,4 +1,44 @@
 RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@491c677c
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@76e189f4
 RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
-EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@69d66a34
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@2637a079
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@745fbded
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@7c0c64b6
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@303e6a6f
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@77de3837
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@2b644345
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@14730176
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+DConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@b985c31
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@79302a02
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+DConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@8523be9
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+DConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@515ac96
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@5cfb51ac
+	RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+	EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@663967db
+	RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+	DConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@4cff4fb
+	RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+	EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@7f1fe4f8
+
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@1e2de85a
+
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@66b19c7d
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@57c1a349
+RConnecting to database: jdbc:mysql://localhost:3306/payroll_service?useSSL=false
+EConnection is successful! com.mysql.cj.jdbc.ConnectionImpl@70e571ca

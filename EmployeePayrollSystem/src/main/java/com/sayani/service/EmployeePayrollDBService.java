@@ -6,6 +6,7 @@ import com.sayani.model.EmployeePayrollData;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class EmployeePayrollDBService {
@@ -95,6 +96,7 @@ public class EmployeePayrollDBService {
             Statement statement = connection.createStatement();
             return statement.executeUpdate(sql);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new EmployeePayrollException("Please check the updateEmployeeDataUsingStatement() for detailed information!");
         }
     }
@@ -117,6 +119,7 @@ public class EmployeePayrollDBService {
 
             return statement.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new EmployeePayrollException("Please check the updateEmployeeDataUsingPreparedStatement() for detailed information!");
         }
     }
@@ -140,6 +143,7 @@ public class EmployeePayrollDBService {
             ResultSet resultSet = employeePayrollDataStatement.executeQuery();
             employeePayrollList = this.getEmployeePayrollData(resultSet);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new EmployeePayrollException("Please check the getEmployeePayrollData(name) for detailed information!");
         }
         return employeePayrollList;
@@ -159,11 +163,13 @@ public class EmployeePayrollDBService {
             while(resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
+                String gender = resultSet.getString("gender");
                 double salary = resultSet.getDouble("salary");
                 LocalDate startDate = resultSet.getDate("start").toLocalDate();
-                employeePayrollList.add(new EmployeePayrollData(id, name, salary, startDate));
+                employeePayrollList.add(new EmployeePayrollData(id, name, gender, salary, startDate));
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new EmployeePayrollException("Please check the getEmployeePayrollData(resultSet) for detailed information!");
         }
         return employeePayrollList;
@@ -181,6 +187,7 @@ public class EmployeePayrollDBService {
             String sql = "SELECT * FROM employee_payroll WHERE name = ?";
             employeePayrollDataStatement = connection.prepareStatement(sql);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new EmployeePayrollException("Please check the preparedStatementForEmployeeData() for detailed information!");
         }
     }
@@ -203,10 +210,12 @@ public class EmployeePayrollDBService {
                 int id = result.getInt("id");
                 String name = result.getString("name");
                 double salary = result.getDouble("salary");
+                String gender = result.getString("gender");
                 LocalDate startDate = result.getDate("start").toLocalDate();
-                employeePayrollList.add(new EmployeePayrollData(id, name, salary, startDate));
+                employeePayrollList.add(new EmployeePayrollData(id, name, gender, salary, startDate));
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new EmployeePayrollException("Please check the getEmployeePayrollDataUsingDB() for detailed information!");
         }
         return employeePayrollList;
@@ -225,5 +234,119 @@ public class EmployeePayrollDBService {
         String sql = String.format("SELECT * FROM employee_payroll WHERE START BETWEEN '%s' AND '%s';",
                 Date.valueOf(startDate), Date.valueOf(endDate));
         return getEmployeePayrollDataUsingDB(sql);
+    }
+
+    /**
+     * Purpose : Calculate total salary based on gender
+     *
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double calculateTotalSalary(String gender) throws EmployeePayrollException {
+        String sql = "SELECT SUM(salary) FROM employee_payroll WHERE gender = ? GROUP BY gender";
+        return calculateSalaryDetailsBasedOnGender(gender, sql);
+    }
+
+    /**
+     * Purpose : Calculate average salary based on gender
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double calculateAverageSalary(String gender) throws EmployeePayrollException {
+        String sql = "SELECT AVG(salary) FROM employee_payroll WHERE gender = ? GROUP BY gender";
+        return calculateSalaryDetailsBasedOnGender(gender, sql);
+    }
+
+    /**
+     * Purpose : Calculate minimum salary based on gender
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double calculateMinSalary(String gender) throws EmployeePayrollException {
+        String sql = "SELECT MIN(salary) FROM employee_payroll WHERE gender = ? GROUP BY gender";
+        return calculateSalaryDetailsBasedOnGender(gender, sql);
+    }
+
+    /**
+     * Purpose : Calculate maximum salary based on gender
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double calculateMaxSalary(String gender) throws EmployeePayrollException {
+        String sql = "SELECT MAX(salary) FROM employee_payroll WHERE gender = ? GROUP BY gender";
+        return calculateSalaryDetailsBasedOnGender(gender, sql);
+    }
+
+    /**
+     * Purpose : Generic method to calculate salary details
+     *
+     * @param gender
+     * @param sql
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    private double calculateSalaryDetailsBasedOnGender(String gender, String sql) throws EmployeePayrollException {
+        double value=0.0;
+        String sum;
+        try (Connection connection = this.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, gender);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                sum = resultSet.getString(1);
+                value = Double.parseDouble(sum);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new EmployeePayrollException("Please check the calculateSalaryBasedOnGender() for detailed information!");
+        }
+        return value;
+    }
+
+    /**
+     * Purpose : Calculate number of employees based on gender
+     *
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public Hashtable<String,Integer> calculateCountEmployee() throws EmployeePayrollException {
+        Hashtable<String,Integer> htable = new Hashtable<>();
+        String sql = "SELECT gender, COUNT(*) FROM employee_payroll GROUP BY gender";
+        try (Connection connection = this.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String gender = resultSet.getString("gender");
+                int count = resultSet.getInt("COUNT(*)");
+                htable.put(gender, count);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new EmployeePayrollException("Please check the calculateCountEmployee() for detailed information!");
+        }
+        return htable;
+    }
+
+    /**
+     * Purpose : Calculate number of employees based on particular gender
+     *
+     * @param gender
+     * @return
+     * @throws EmployeePayrollException
+     */
+
+    public double calculateNumberOfEmployee(String gender) throws EmployeePayrollException {
+        String sql = "SELECT COUNT(*) FROM employee_payroll WHERE gender = ? GROUP BY gender";
+        return calculateSalaryDetailsBasedOnGender(gender, sql);
     }
 }
